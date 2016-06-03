@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "customization",
+    "password": "customization",
+    "database": "customizationdb",
+    "host": "127.0.0.1",
+    "port": "5432",
+    "dialect": "postgres"
+  }
+}
