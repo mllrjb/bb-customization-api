@@ -1,0 +1,20 @@
+version: '2'
+services:
+  api:
+    build: .
+    ports:
+     - "8080:8080"
+    depends_on:
+     - postgres
+  postgres:
+    image: postgres
+    volumes:
+     - /Users/jason/projects/sandbox/customization-api/.tmp:/var/lib/postgresql/data/pgdata
+    environment:
+     - POSTGRES_USER=customization
+     - POSTGRES_PASSWORD=password
+     - POSTGRES_DB=customizationdb
+     - PGDATA=/var/lib/postgresql/data/pgdata
+    expose:
+     - '5432'
+
