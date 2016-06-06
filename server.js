@@ -5,6 +5,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var swaggerize = require('swaggerize-express');
 var path = require('path');
+var db = require('./models/store');
 
 var app = express();
 
@@ -18,6 +19,11 @@ app.use(swaggerize({
     handlers: path.resolve('./handlers')
 }));
 
-server.listen(8080, function () {
-    app.swagger.api.host = server.address().address + ':' + server.address().port;
-});
+db.sequelize.sync().then(function() {
+	server.listen(8080, function migrated() {
+	    app.swagger.api.host = server.address().address + ':' + server.address().port;
+	});	
+}, function migrateFail(err) {
+	console.log(err, err.stack);
+})
+
