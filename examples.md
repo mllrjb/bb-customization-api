@@ -1,5 +1,17 @@
 # Examples
 
+create items
+
+```
+{
+  "id": "theme-name",
+  "description": "The name of a custom theme to load.",
+  "displayName": "Theme Name",
+  "value": "hpe-light",
+  "app": "*"
+}
+```
+
 local app
 
 `npm start`
