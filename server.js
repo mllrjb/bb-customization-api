@@ -19,11 +19,18 @@ app.use(swaggerize({
     handlers: path.resolve('./handlers')
 }));
 
-db.sequelize.sync().then(function() {
-	server.listen(8080, function migrated() {
-	    app.swagger.api.host = server.address().address + ':' + server.address().port;
-	});	
-}, function migrateFail(err) {
-	console.log(err, err.stack);
-})
+function _start() {
+  console.log('Connecting to database...');
+  db.sequelize.sync().then(function() {
+    console.log('Successfully connected to database!');
+    server.listen(8080, function migrated() {
+        app.swagger.api.host = server.address().address + ':' + server.address().port;
+    }); 
+  }, function migrateFail(err) {
+    console.log(err, err.stack);
+    // wait 10 seconds and retry
+    setTimeout(_start, 5000);
+  });
+}
 
+_start();

@@ -1,7 +1,7 @@
 {
-  "name": "swagger-example",
+  "name": "customization-api",
   "description": "",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Jason Miller <millerjb@hpe.com>",
   "contributors": [],
   "repository": {

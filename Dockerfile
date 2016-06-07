@@ -6,4 +6,4 @@ RUN npm install
 ADD . /app
 
 CMD []
-ENTRYPOINT ["/nodejs/bin/npm", "start"]
+ENTRYPOINT ["/nodejs/bin/node", "server"]
