@@ -9,7 +9,7 @@ services:
   postgres:
     image: postgres
     volumes:
-     - /Users/millerjb_hp/projects/brownbags/customization-api/.tmp:/var/lib/postgresql/data/pgdata
+     - .tmp:/var/lib/postgresql/data/pgdata
     environment:
      - POSTGRES_USER=customization
      - POSTGRES_PASSWORD=password
